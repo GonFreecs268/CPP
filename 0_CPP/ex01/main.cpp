@@ -15,7 +15,10 @@
 
 int	main() {
 	
-	Contact instance;
+	Contact MyContact("Jules", "Duval Giard", "Trafalgar D Law", "3 000 000 000", "Ope Ope no Mi");
+
+	std::cout << "Access to the pirate bount..." << std::endl;
+	MyContact.display();
 
 	return (0);	
 }

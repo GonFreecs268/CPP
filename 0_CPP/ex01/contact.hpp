@@ -22,16 +22,18 @@ class Contact
 {
 	// access specifier
 	public:
-	std::string	first_name;
-	std::string last_name;
-	std::string	nickname;
-	std::string phone_number;
-	std::string	darkest_secret;
+	const std::string	first_name;
+	const std::string	last_name;
+	const std::string	nickname;
+	const std::string	phone_number;
+	const std::string	darkest_secret;
 
-	Contact( void );
+	Contact(const std::string &first, const std::string &last, const std::string &nick,
+			const std::string &phone, const std::string &secret);
 	~Contact( void );
 	
-	void display(void);
+	// !!!! declarer ma fonction membre en const si elle ne modifie pas l'instance de ma classe !!!!
+	void display(void) const;
 	//{
 	// std::cout << first_name << " : " << phone_number << std::endl;
 	// std::cout << " : ";
