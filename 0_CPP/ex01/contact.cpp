@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:20:49 by jaristil          #+#    #+#             */
-/*   Updated: 2023/11/13 18:03:31 by jaristil         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:36:57 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ Contact::Contact(const std::string &first, const std::string &last, const std::s
 {
 	std::cout << "Constructor called" << std::endl;
 
-	std::cout << "this->first_name = " << this->first_name << std::endl;
-	std::cout << "this->last_name = " << this->last_name << std::endl;
-	std::cout << "this->nickname = " << this->nickname << std::endl;
-	std::cout << "this->phone_number = " << this->phone_number << std::endl;
-	std::cout << "this-> darkest_secret = " << this->darkest_secret << std::endl;
+	std::cout << "this->first_name = " << this->getfirst_name << std::endl;
+	std::cout << "this->last_name = " << this->getlast_name << std::endl;
+	std::cout << "this->nickname = " << this->getnickname << std::endl;
+	std::cout << "this->phone_number = " << this->getphone_number << std::endl;
+	std::cout << "this-> darkest_secret = " << this->getdarkest_secret << std::endl;
 
 	// this->first_name = "Juvles";
 	return;
 }
 
-Contact::~Contact( void ) {
+Contact::~Contact(void) {
 	
 	std::cout << "Destructor called" << std::endl;
 	return;
