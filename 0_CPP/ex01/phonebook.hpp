@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:32:40 by jaristil          #+#    #+#             */
-/*   Updated: 2023/11/13 17:46:52 by jaristil         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:44:12 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 #include <iomanip>
 #include "contact.hpp"
 
-class PHONEBOOK
+class Phonebook
 {
 	public:
+	
+	Phonebook(void);
+	~Phonebook(void);
+	
 	Contact _contact[8];
-	int	num;
+	
+	void	AddContact( Contact &New);
 };
 
 #endif

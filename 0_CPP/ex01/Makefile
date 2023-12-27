@@ -6,7 +6,7 @@
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 17:21:35 by jaristil          #+#    #+#              #
-#    Updated: 2023/11/13 17:38:40 by jaristil         ###   ########.fr        #
+#    Updated: 2023/12/27 18:55:54 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ END=\033[0m
 
 # ----------- Files ----------- #
 
-SRC := main.cpp contact.cpp
+SRC := main.cpp contact.cpp phonebook.cpp
 
 INCLUDE := phonebook.hpp contact.hpp
 
