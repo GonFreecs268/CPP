@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:30:09 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/04 18:16:55 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:05:24 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <string>
 #include <cctype>
 #include <iomanip>
+#include <stdlib.h>
+#include <ctype.h>
 
 class Contact
 {
