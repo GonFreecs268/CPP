@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:37:08 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/05 19:01:17 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/05 19:05:27 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,10 @@ int	Phonebook::DisplayDirectory(Phonebook &directory) const {
 	std::cout << "\nChoose a contact\n" << std::endl;
 	std::string str;
 	getline(std::cin, str);
-	if (str.size() != 1) || !isdigit(str[0])
-		return (std::cout << "\nWrong index, please choose an index\n" << std::endl);
+	if (str.size() != 1 || !isdigit(str[0]))
+		return (std::cout << "\nWrong index, please choose an index\n" << std::endl, 0);
 	index = atoi(str.c_str());
 	if (index >= 1 && index <= 8)
 		return (DisplayContact(directory._contact[index - 1]), 0);
+	return (std::cout << "\nPlease, try again.\n" << std::endl, 0);
 }
