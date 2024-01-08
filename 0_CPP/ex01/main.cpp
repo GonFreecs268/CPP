@@ -16,69 +16,50 @@
 int	main() {
 	
 	Phonebook	Directory;
+    std::string choice;
 	
-	Directory.PrintMenu();
 	try
 	{
-		Directory.AddContact(Directory._contact[0]);
-		std::cout << Directory._contact[0].getFirstname() << std::endl;
-	}
+        while (true)
+        {
+            Directory.PrintMenu();
+            choice = Directory.ListenInput("Enter your choice: ", false);
+            if (choice == "ADD" || choice == "add" || choice == "Add")
+            {
+                for (int i = 0; i < 8; ++i)
+                {
+                    if (Directory._contact[i].getFirstname().empty())
+                    {
+                        Directory.AddContact(Directory._contact[i]);
+                        break ;
+                    }
+                }
+            }
+            else if (choice == "SEARCH" || choice == "Search" || choice == "search")
+            {
+                for (int i = 0; i < 8; ++i)
+                {
+                    if (!Directory._contact[i].getFirstname().empty())
+                    {
+                        Directory.DisplayDirectory(Directory);
+                        break ;
+                    }
+                }
+            }
+            else if (choice == "EXIT" || choice == "Exit" || choice == "exit")
+            {
+                std::cout << "\nBye.\n" << std::endl;
+                return (0);
+            }
+            else
+            {
+                std::cout << "\nInvalid choice. Please, try again.\n" << std::endl;
+            }
+        }
+    }
 	catch (const std::runtime_error &e)
 	{
 		std::cerr << "Program close successfully" << e.what() << std::endl; 
 	}
 	return (0);	
 }
-
-/*int main()
-{
-    Phonebook Directory;
-
-    try
-    {
-        while (true)
-        {
-            Directory.printMenu();
-            std::string choice = Directory.listenInput("Enter your choice: ", false);
-
-            if (choice == "ADD")
-            {
-                for (int i = 0; i < 8; ++i)
-                {
-                    if (Directory._contact[i].getFirstname().empty())
-                    {
-                        Directory.addContact(Directory._contact[i]);
-                        break;
-                    }
-                }
-            }
-            else if (choice == "SEARCH")
-            {
-                for (int i = 0; i < 8; ++i)
-                {
-                    if (!Directory._contact[i].getFirstname().empty())
-                    {
-                        Directory.displayContact(Directory._contact[i]);
-                        break;
-                    }
-                }
-            }
-            else if (choice == "EXIT")
-            {
-                std::cout << "Goodbye!\n" << std::endl;
-                break;
-            }
-            else
-            {
-                std::cout << "Invalid choice. Please try again.\n" << std::endl;
-            }
-        }
-    }
-    catch (const std::runtime_error &e)
-    {
-        std::cerr << "Program closed successfully: " << e.what() << std::endl;
-    }
-
-    return 0;
-}
-*/
