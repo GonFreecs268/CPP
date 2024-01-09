@@ -18,22 +18,18 @@ int	main() {
 	Phonebook	Directory;
     std::string choice;
 	
-	try
-	{
+    try
+    {
+        int nextIndex = 0;
+
         while (true)
         {
             Directory.PrintMenu();
             choice = Directory.ListenInput("Enter your choice: ", false);
             if (choice == "ADD" || choice == "add" || choice == "Add")
             {
-                for (int i = 0; i < 8; ++i)
-                {
-                    if (Directory._contact[i].getFirstname().empty())
-                    {
-                        Directory.AddContact(Directory._contact[i]);
-                        break ;
-                    }
-                }
+                Directory.AddContact(Directory._contact[nextIndex]);
+                nextIndex = (nextIndex + 1) % 8;
             }
             else if (choice == "SEARCH" || choice == "Search" || choice == "search")
             {
@@ -42,7 +38,7 @@ int	main() {
                     if (!Directory._contact[i].getFirstname().empty())
                     {
                         Directory.DisplayDirectory(Directory);
-                        break ;
+                        break;
                     }
                 }
             }
@@ -57,9 +53,9 @@ int	main() {
             }
         }
     }
-	catch (const std::runtime_error &e)
-	{
-		std::cerr << "Program close successfully" << e.what() << std::endl; 
-	}
-	return (0);	
+    catch (const std::runtime_error &e)
+    {
+        std::cerr << "Program close successfully" << e.what() << std::endl;
+    }
+    return (0);
 }
