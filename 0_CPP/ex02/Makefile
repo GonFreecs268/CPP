@@ -2,7 +2,7 @@
 
 # ----------- Program ----------- #
 
-NAME := phonebook
+NAME := journal
 CC := c++
 FLAGS := -Wall -Wextra -Werror -std=c++98
 
@@ -20,9 +20,9 @@ END=\033[0m
 
 # ----------- Files ----------- #
 
-SRC := main.cpp contact.cpp phonebook.cpp
+SRC := Account.cpp tests.cpp
 
-INCLUDE := phonebook.hpp contact.hpp
+INCLUDE := Account.hpp
 
 OBJ	:= $(SRC:.cpp=.o)
 
