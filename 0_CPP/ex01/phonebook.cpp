@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:37:08 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/05 19:05:27 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:34:22 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ Phonebook::~Phonebook(void) {
 	
 	// std::cout << "Destructor called" << std::endl;
 	return ;
+}
+
+Contact&	Phonebook::GetContact(int index) {
+
+	if (index >= 0 && index < 8)
+		return _contact[index];
+	else
+		throw std::out_of_range("Invalid contact index");
 }
 
 static bool isValidPhone(const std::string &phoneNumber)

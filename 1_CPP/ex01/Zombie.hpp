@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 17:32:40 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/10 17:42:56 by jaristil         ###   ########.fr       */
+/*   Created: 2024/01/11 17:24:10 by jaristil          #+#    #+#             */
+/*   Updated: 2024/01/11 17:58:43 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+
+# define SUCCESS 0
 
 #include <iostream>
 #include <string>
-#include <cctype>
 #include <iomanip>
 #include <stdlib.h>
 #include <ctype.h>
-#include "contact.hpp"
+#include <cstring>
+#include <string.h>
 
-class Phonebook
+class	Zombie
 {
-	public:
+	public :
 	
-	Phonebook(void);
-	~Phonebook(void);
-	
-	std::string ListenInput(const std::string &prompt, bool validPhone);
-	void	AddContact(Contact &New);
-	void	DisplayContact(Contact infos) const;
-	void	PrintMenu() const;
-	int		DisplayDirectory(Phonebook &directory) const;
+	Zombie(void);
+	Zombie(std::string name);
+	~Zombie(void);
 
-	// fonction qui renvoie une reference ver sun objet type Contact
-	Contact& GetContact(int index);
-	
+	void		announce( void ) const;
+	void		SetName(std::string name);
+	std::string	GetName(void) const;
+
 	private :
 	
-	Contact _contact[8];
+	std::string _name;
 };
+
+Zombie *zombieHorde(int N, std::string name);
 
 #endif

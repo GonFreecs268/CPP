@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:02:12 by jaristil          #+#    #+#             */
-/*   Updated: 2023/11/10 17:29:28 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:02:13 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int	main(int ac, char **av) {
 	if (ac == 1) {
 		std::cerr << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (1);
+		return (0);
 	}
 	// Parcourir tous les arguments de la ligne de commande
 	for (int i = 1; i < ac; ++i) {
@@ -29,11 +29,6 @@ int	main(int ac, char **av) {
 		
 		// Convertir tous les caracteres en MAJ
 		for (size_t j = 0; j < arg.length(); ++j) {
-			// utilisation de reference qui est lie au caractere a la pos j dans arg
-			// char &c = arg[j];
-			// c = std::toupper(c);
-			
-			// sinon way 2 
 			arg[j] = std::toupper(arg[j]);
 		}
 		

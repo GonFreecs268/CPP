@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:30:09 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/05 15:05:24 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:12:29 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Contact
 {
 	// access specifier
 	private:
+	
 	std::string	firstname;
 	std::string	lastname;
 	std::string	nickname;
@@ -31,6 +32,7 @@ class Contact
 	std::string	darkest_secret;
 
 	public:
+	
 	Contact(void);
 	~Contact(void);
 	

@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 17:32:40 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/10 17:42:56 by jaristil         ###   ########.fr       */
+/*   Created: 2024/01/10 18:31:58 by jaristil          #+#    #+#             */
+/*   Updated: 2024/01/11 17:28:36 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 #include <iostream>
 #include <string>
-#include <cctype>
 #include <iomanip>
 #include <stdlib.h>
 #include <ctype.h>
-#include "contact.hpp"
+#include <cstring>
+#include <string.h>
 
-class Phonebook
+# define SUCCESS 0
+
+class	Zombie
 {
-	public:
-	
-	Phonebook(void);
-	~Phonebook(void);
-	
-	std::string ListenInput(const std::string &prompt, bool validPhone);
-	void	AddContact(Contact &New);
-	void	DisplayContact(Contact infos) const;
-	void	PrintMenu() const;
-	int		DisplayDirectory(Phonebook &directory) const;
+	public :
 
-	// fonction qui renvoie une reference ver sun objet type Contact
-	Contact& GetContact(int index);
+	Zombie(void);
+	~Zombie(void);
+	Zombie( std::string name );
+
+	void	announce( void ) const;
+	static Zombie*	newZombie( std::string name );
+	static void	randomChump( std::string name );
 	
 	private :
-	
-	Contact _contact[8];
+
+	std::string _name;
 };
 
 #endif

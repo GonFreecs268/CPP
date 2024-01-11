@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/10 15:49:18 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/05 18:53:25 by jaristil         ###   ########.fr        #
+#    Created: 2024/01/11 17:19:37 by jaristil          #+#    #+#              #
+#    Updated: 2024/01/11 17:24:53 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------- Program ----------- #
 
-NAME := megaphone
+NAME := zombie
 CC := c++
 FLAGS := -Wall -Wextra -Werror -std=c++98
 
@@ -30,7 +30,9 @@ END=\033[0m
 
 # ----------- Files ----------- #
 
-SRC := megaphone.cpp
+SRC := main.cpp Zombie.cpp ZombieHorde.cpp
+
+INCLUDE := Zombie.hpp
 
 OBJ	:= $(SRC:.cpp=.o)
 
@@ -43,7 +45,7 @@ OBJ	:= $(SRC:.cpp=.o)
 	
 all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(INCLUDE)
 	@echo "$(BLUE) ...Project compiling... $(END)"
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN) ...Project compiled... $(END)"
