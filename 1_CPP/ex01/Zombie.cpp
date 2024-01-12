@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:23:49 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/11 17:46:31 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:50:37 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Zombie::Zombie( void ) {
 
-	this->_name = "Nico";
+	// this->_name = "Nico";
 	std::cout << "Constructor called:" << this->_name << " is coming back to life !" << std::endl;
 	return ;
 }

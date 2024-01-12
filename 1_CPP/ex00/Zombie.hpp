@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:31:58 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/11 17:28:36 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:52:01 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ class	Zombie
 	Zombie( std::string name );
 
 	void	announce( void ) const;
-	static Zombie*	newZombie( std::string name );
-	static void	randomChump( std::string name );
 	
 	private :
 
 	std::string _name;
 };
 
+Zombie*	newZombie( std::string name );
+void	randomChump( std::string name );
+	
 #endif
