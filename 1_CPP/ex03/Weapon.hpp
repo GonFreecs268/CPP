@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:34:09 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/12 17:10:27 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:54:36 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Weapon
 	
 	private:
 	
-	std::string type;
+	std::string _type;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:55:39 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/12 15:11:54 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:19:52 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main() {
 	std::string	&stringREF = str;
 
 	std::cout << "String's adress is: " << &str << std::endl;
-	std::cout << "StringPTR's adress is: " << stringPTR << std::endl;
+	std::cout << "StringPTR's adress is: " << &stringPTR << std::endl;
 	std::cout << "StringREF's adress is: " << &stringREF << std::endl;
 	
 	std::cout << "String's value is: " << str << std::endl;
