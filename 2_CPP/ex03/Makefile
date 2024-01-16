@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/15 17:02:45 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/16 17:10:55 by jaristil         ###   ########.fr        #
+#    Created: 2024/01/16 17:11:43 by jaristil          #+#    #+#              #
+#    Updated: 2024/01/16 17:20:50 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ END=\033[0m
 
 # ----------- Files ----------- #
 
-SRC := main.cpp Fixed.cpp
+SRC := main.cpp Fixed.cpp bsp.cpp
 
 INCLUDE := Fixed.hpp
 

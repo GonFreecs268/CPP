@@ -6,13 +6,13 @@
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 17:02:45 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/15 17:59:55 by jaristil         ###   ########.fr        #
+#    Updated: 2024/01/16 17:11:03 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------- Program ----------- #
 
-NAME := fixed
+NAME := Fixed
 CC := c++
 FLAGS := -Wall -Wextra -Werror -std=c++98
 
