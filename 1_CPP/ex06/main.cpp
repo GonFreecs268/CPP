@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:14:44 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 15:39:30 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:35:00 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int ac, char **av) {
 	
 	if (ac != 2)
 	{	
-		std::cout << "[ * KAREN VOICE * ]\n"
+		std::cerr << "[ * KAREN VOICE * ]\n"
 	 			<< "Harl cannot complains about this..." << std::endl;
 	}
 	else

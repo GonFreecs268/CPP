@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:15:06 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 16:01:14 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:34:56 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void    Harl::complain(std::string level)
 			(this->*FctPtr[i])();
 			break ;
 		default:
-			std::cout << "[ Probably complaining about insignificant problems ]\n";
+			std::cerr << "[ Probably complaining about insignificant problems ]\n";
 	}
 }
