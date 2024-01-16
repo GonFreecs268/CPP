@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 16:29:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/13 15:29:43 by jaristil         ###   ########.fr       */
+/*   Created: 2024/01/15 17:02:17 by jaristil          #+#    #+#             */
+/*   Updated: 2024/01/16 11:35:42 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
 
-#include "Weapon.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-class HumanA
+#include <iostream>
+#include <string.h>
+
+class	Fixed
 {
-	private:
+	public :
 
-	std::string		_name;
-	Weapon&	_weapon; // car ref ne peut pas !ref
-	
-	public:
-	
-	// HumanA(void);
-	HumanA(std::string name, Weapon& weapon);
-	~HumanA(void);
+	Fixed(void);
+	Fixed(const Fixed &src);
+	~Fixed(void);
 
-	void	attack(void);
+	Fixed&	operator = (const Fixed &src);
+
+
+	int		getRawBits( void ) const;
+	void	setRawBits( int const raw );
+	
+	private :
+
+	int _FixedPoint;
+	static const int _FractBits = 8;
+
 };
 
 #endif

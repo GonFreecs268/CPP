@@ -6,17 +6,17 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:33:33 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/12 20:01:41 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:11:36 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(void) {
+// Weapon::Weapon(void) {
 	
-	std::cout << "Constructeur called" << std::endl;
-	return ;
-}
+// 	std::cout << "Constructeur called" << std::endl;
+// 	return ;
+// }
 
 Weapon::Weapon(std::string type) {
 
@@ -27,7 +27,7 @@ Weapon::Weapon(std::string type) {
 
 Weapon::~Weapon(void) {
 
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called: " << this->_type << " get destroyed" << std::endl;
 	return ;
 }
 
@@ -41,3 +41,4 @@ void	Weapon::setType(std::string type) {
 	this->_type = type;
 	return ;
 }
+

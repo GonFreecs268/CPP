@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 16:29:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/13 15:29:43 by jaristil         ###   ########.fr       */
+/*   Created: 2024/01/15 17:01:33 by jaristil          #+#    #+#             */
+/*   Updated: 2024/01/15 17:59:42 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
+#include "Fixed.hpp"
 
-#include "Weapon.hpp"
-
-class HumanA
-{
-	private:
-
-	std::string		_name;
-	Weapon&	_weapon; // car ref ne peut pas !ref
+int main( void ) {
 	
-	public:
-	
-	// HumanA(void);
-	HumanA(std::string name, Weapon& weapon);
-	~HumanA(void);
+Fixed a;
+Fixed b( a );
+Fixed c;
+c = b;
 
-	void	attack(void);
-};
+std::cout << a.getRawBits() << std::endl;
+std::cout << b.getRawBits() << std::endl;
+std::cout << c.getRawBits() << std::endl;
 
-#endif
+return (0);
+}

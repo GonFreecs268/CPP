@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:01:19 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 11:35:49 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:22:45 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,95 @@ std::ostream& operator<<(std::ostream& out, const Fixed& obj) {
 
 	out << obj.toFloat();
 	return (out);
+}
+
+Fixed Fixed::operator+(const Fixed &src) const {
+	
+	return Fixed(this->toFloat() + src.toFloat());
+}
+Fixed Fixed::operator-(const Fixed &src) const {
+
+	return Fixed(this->toFloat() - src.toFloat());
+}
+Fixed Fixed::operator*(const Fixed &src) const {
+
+	return Fixed(this->toFloat() * src.toFloat());
+}
+Fixed Fixed::operator/(const Fixed &src) const {
+	
+	return Fixed(this->toFloat() / src.toFloat());
+}
+
+bool Fixed::operator==(const Fixed &fixed) const {
+	
+	return(this->toFloat() == fixed.toFloat());
+};
+bool Fixed::operator!=(const Fixed &fixed) const {
+	
+	return(this->toFloat() !=  fixed.toFloat());
+};
+bool Fixed::operator>=(const Fixed &fixed) const {
+
+	return(this->toFloat() >= fixed.toFloat());
+};
+bool Fixed::operator<=(const Fixed &fixed) const {
+
+	return(this->toFloat() <= fixed.toFloat());
+};
+bool Fixed::operator>(const Fixed &fixed) const {
+	
+	return(this->toFloat() > fixed.toFloat());
+};
+
+bool Fixed::operator<(const Fixed &fixed) const {
+	
+	return(this->toFloat() < fixed.toFloat());
+}
+
+Fixed Fixed::operator++(int) {
+	
+	Fixed tmp(*this);
+	
+	_FixedPoint++;
+	return(tmp);	
+}
+
+Fixed& Fixed::operator++(void) {
+	
+	_FixedPoint++;
+	return(*this);
+}
+
+Fixed Fixed::operator--(int) {
+	
+	Fixed tmp(*this);
+	
+	_FixedPoint--;
+	return(tmp);
+}
+
+Fixed& Fixed::operator--(void) {
+	
+	_FixedPoint--;
+	return(*this);
+}
+
+Fixed &Fixed::min(Fixed &n1, Fixed &n2) {
+	
+	return((n1 < n2) ? n1 : n2);
+}
+
+Fixed const &Fixed::min(const Fixed &n1, const Fixed &n2) {
+	
+	return((n1 < n2) ? n1 : n2);	
+}
+
+Fixed &Fixed::max(Fixed &n1, Fixed &n2) {
+	
+	return((n1 > n2) ? n1 : n2);	
+}
+
+Fixed const &Fixed::max(const Fixed &n1, const Fixed &n2) {
+	
+	return((n1 > n2) ? n1 : n2);
 }

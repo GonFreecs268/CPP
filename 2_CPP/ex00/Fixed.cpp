@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:01:19 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 11:35:49 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:35:38 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ Fixed::Fixed(const Fixed &src) {
 
 	std::cout << "Copy Constructor Called" << std::endl;
 	*this = src;
-	return ;
-}
-
-Fixed::Fixed(const int intg) {
-
-	std::cout << "Integer Constructor Called" << std::endl;
-	this->_FixedPoint = intg << _FractBits;
-	return ;
-}
-
-Fixed::Fixed(const float flt) : _FixedPoint(roundf(flt * (1 << _FractBits))) {
-	
-	std::cout << "Float Constructor Called" << std::endl;
 	return ;
 }
 
@@ -56,17 +43,6 @@ void	Fixed::setRawBits( int const raw ) {
 	return ;
 }
 
-
-int	Fixed::toInt( void ) const {
-
-	return ((this->getRawBits()) >> _FractBits);
-}
-
-float	Fixed::toFloat( void ) const {
-
-	return (static_cast<float> (this->getRawBits()) / (1 << _FractBits));
-}
-
 Fixed& Fixed::operator=(const Fixed &src) {
 
 	// pour eviter l'auto_attribution
@@ -76,10 +52,4 @@ Fixed& Fixed::operator=(const Fixed &src) {
 	}
 	// permet a = b = c, sinon pas obligatoire de return
 	return (*this);
-}
-
-std::ostream& operator<<(std::ostream& out, const Fixed& obj) {
-
-	out << obj.toFloat();
-	return (out);
 }

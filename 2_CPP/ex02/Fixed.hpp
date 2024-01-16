@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:02:17 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 11:35:52 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:32:34 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,40 @@ class	Fixed
 	Fixed(const float flt);
 	~Fixed(void);
 
+	// Surcharge d'opérateur
 	Fixed&	operator = (const Fixed &src);
 
+	// Surcharge d'opérateur arithmetiques
+	Fixed	operator/(const Fixed &src) const;
+	Fixed	operator*(const Fixed &src) const;
+	Fixed	operator+(const Fixed &src) const;
+	Fixed	operator-(const Fixed &src) const;
+
+	// Surchage d'opérateur de comparaison
+	bool	operator==(const Fixed &fixed) const;
+	bool	operator!=(const Fixed &fixed) const;
+	bool	operator>=(const Fixed &fixed) const;
+	bool	operator<=(const Fixed &fixed) const;
+	bool	operator>(const Fixed &fixed) const;
+	bool	operator<(const Fixed &fixed) const;
+
+	// Surcharge d'opérateur d'incrémentation
+	Fixed	operator++(int);
+	Fixed&	operator++(void);
+	Fixed	operator--(int);
+	Fixed&	operator--(void);
 
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 	
 	int		toInt( void ) const;
 	float	toFloat( void ) const;
-	
+
+	static Fixed&		min(Fixed &n1, Fixed &n2);
+	static const Fixed&	min(const Fixed &n1, const Fixed &n2);
+	static Fixed&		max(Fixed &n1, Fixed &n2);
+	static const Fixed&	max(const Fixed &n1, const Fixed &n2);
+
 	private :
 
 	int _FixedPoint;

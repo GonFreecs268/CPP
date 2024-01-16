@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:49 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/12 19:45:56 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:45:57 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 
 class HumanB
 {
-	private:
-	
-	std::string	_name;
-	const Weapon&		_weapon;
-	
 	public:
 	
-	HumanB(void);
-	HumanB(std::string type, Weapon &weapon);
+	// HumanB(void);
+	HumanB(std::string name);
 	~HumanB(void);
 
 	void	attack(void);
-	void	setWeapon(const Weapon &weapon);
+	void	setWeapon(Weapon *weapon);
+	
+	private:
+	
+	std::string	_name;
+	Weapon		*_weapon;
 };
 
 #endif

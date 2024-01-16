@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/12 15:15:26 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/13 16:59:59 by jaristil         ###   ########.fr        #
+#    Created: 2024/01/16 15:14:24 by jaristil          #+#    #+#              #
+#    Updated: 2024/01/16 15:14:36 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------- Program ----------- #
 
-NAME := weapon
+NAME := HarlFilter
 CC := c++
 FLAGS := -Wall -Wextra -Werror -std=c++98
 
@@ -30,9 +30,9 @@ END=\033[0m
 
 # ----------- Files ----------- #
 
-SRC := main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC := main.cpp Harl.cpp
 
-INCLUDE := Weapon.hpp HumanA.hpp HumanB.hpp
+INCLUDE := Harl.hpp
 
 OBJ	:= $(SRC:.cpp=.o)
 

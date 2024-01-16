@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 16:29:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/13 15:29:43 by jaristil         ###   ########.fr       */
+/*   Created: 2024/01/16 13:50:41 by jaristil          #+#    #+#             */
+/*   Updated: 2024/01/16 15:15:28 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
-#include "Weapon.hpp"
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <cstring>
 
-class HumanA
+class Harl
 {
-	private:
-
-	std::string		_name;
-	Weapon&	_weapon; // car ref ne peut pas !ref
-	
 	public:
 	
-	// HumanA(void);
-	HumanA(std::string name, Weapon& weapon);
-	~HumanA(void);
+	Harl( void );
+	~Harl( void );
 
-	void	attack(void);
+	void	complain( std::string level );
+	
+	private:
+	
+	void	debug( void );
+	void	info( void );
+	void	warning( void );
+	void	error( void );
 };
 
 #endif
