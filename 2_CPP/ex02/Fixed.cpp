@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:01:19 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/17 15:50:08 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:41:14 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,17 @@ Fixed Fixed::operator+(const Fixed &src) const {
 	
 	return Fixed(this->toFloat() + src.toFloat());
 }
+
 Fixed Fixed::operator-(const Fixed &src) const {
 
 	return Fixed(this->toFloat() - src.toFloat());
 }
+
 Fixed Fixed::operator*(const Fixed &src) const {
 
 	return Fixed(this->toFloat() * src.toFloat());
 }
+
 Fixed Fixed::operator/(const Fixed &src) const {
 	
 	return Fixed(this->toFloat() / src.toFloat());
@@ -117,6 +120,7 @@ bool Fixed::operator<=(const Fixed &fixed) const {
 
 	return(this->toFloat() <= fixed.toFloat());
 };
+
 bool Fixed::operator>(const Fixed &fixed) const {
 	
 	return(this->toFloat() > fixed.toFloat());

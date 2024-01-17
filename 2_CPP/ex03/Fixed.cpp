@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:01:19 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/17 15:41:50 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:23:00 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,3 +174,6 @@ Fixed const &Fixed::max(const Fixed &n1, const Fixed &n2) {
 	
 	return((n1 > n2) ? n1 : n2);
 }
+
+
+Super correcteur, bien qu'il n'en soit pas encore au module CPP, des bases sont presentes. J'espere avoir ete le plus clair possible dans ce module pas franchement evident a demontrer. Bon courage pour la suite de ton cursus et pour tes exams !
