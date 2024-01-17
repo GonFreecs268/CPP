@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:01:19 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 17:11:31 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:50:08 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ Fixed Fixed::operator--(int) {
 	
 	Fixed tmp(*this);
 	
-	_FixedPoint--;f
+	_FixedPoint--;
 	return(tmp);
 }
 

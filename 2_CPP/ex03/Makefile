@@ -6,13 +6,13 @@
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 17:11:43 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/16 17:20:50 by jaristil         ###   ########.fr        #
+#    Updated: 2024/01/17 15:14:34 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------- Program ----------- #
 
-NAME := Fixed
+NAME := Bsp
 CC := c++
 FLAGS := -Wall -Wextra -Werror -std=c++98
 
@@ -30,9 +30,9 @@ END=\033[0m
 
 # ----------- Files ----------- #
 
-SRC := main.cpp Fixed.cpp bsp.cpp
+SRC := main.cpp Fixed.cpp Point.cpp bsp.cpp
 
-INCLUDE := Fixed.hpp
+INCLUDE := Fixed.hpp Point.hpp
 
 OBJ	:= $(SRC:.cpp=.o)
 

@@ -6,7 +6,7 @@
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 17:02:45 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/16 17:10:55 by jaristil         ###   ########.fr        #
+#    Updated: 2024/01/17 16:38:36 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ END=\033[0m
 
 SRC := main.cpp Fixed.cpp
 
-INCLUDE := Fixed.hpp
+INCLUDE := Fixed.hpp colors.hpp
 
 OBJ	:= $(SRC:.cpp=.o)
 

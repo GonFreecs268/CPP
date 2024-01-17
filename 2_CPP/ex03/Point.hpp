@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:22:22 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 17:34:32 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:38:32 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ class Point
 	Point(Point const &src);
 	Point(float const x, float const y);
 	~Point();
+
+	const Fixed &getX(void) const;
+    const Fixed &getY(void) const;
 
 	int	tmp;
 	

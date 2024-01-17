@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:01:19 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/16 17:11:31 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:41:50 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 Fixed::Fixed(void) {
 	
-	std::cout << "Default Constructor Called" << std::endl;
+	// std::cout << "Default Constructor Called" << std::endl;
 	this->_FixedPoint = 0;
 	return ;
 }
 
 Fixed::Fixed(const Fixed &src) {
 
-	std::cout << "Copy Constructor Called" << std::endl;
+	// std::cout << "Copy Constructor Called" << std::endl;
 	*this = src;
 	return ;
 }
@@ -35,13 +35,13 @@ Fixed::Fixed(const int intg) {
 
 Fixed::Fixed(const float flt) : _FixedPoint(roundf(flt * (1 << _FractBits))) {
 	
-	std::cout << "Float Constructor Called" << std::endl;
+	// std::cout << "Float Constructor Called" << std::endl;
 	return ;
 }
 
 Fixed::~Fixed(void) {
 
-	std::cout << "Destructor Called" << std::endl;
+	// std::cout << "Destructor Called" << std::endl;
 	return ;
 }
 
@@ -145,7 +145,7 @@ Fixed Fixed::operator--(int) {
 	
 	Fixed tmp(*this);
 	
-	_FixedPoint--;f
+	_FixedPoint--;
 	return(tmp);
 }
 
