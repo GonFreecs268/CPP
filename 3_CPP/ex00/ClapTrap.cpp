@@ -6,11 +6,11 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:48 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/18 18:40:18 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:58:19 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void) : _health(10), _energy(10), _attack(0) {
 
@@ -48,7 +48,7 @@ void	ClapTrap::SetHealth(unsigned int amount) {
 	return ;
 }
 
-int	ClapTrap::GetHealth(void) const {
+unsigned int	ClapTrap::GetHealth(void) const {
 
 	return (this->_health);
 }
@@ -59,7 +59,7 @@ void	ClapTrap::SetEnergy(unsigned int amount) {
 	return ;
 }
 
-int	ClapTrap::GetEnergy(void) const {
+unsigned int	ClapTrap::GetEnergy(void) const {
 
 	return (this->_energy);
 }
@@ -70,7 +70,7 @@ void	ClapTrap::SetAttack(unsigned int amount) {
 	return ;
 }
 
-int	ClapTrap::GetAttack(void) const {
+unsigned int	ClapTrap::GetAttack(void) const {
 
 	return (this->_attack);
 }
@@ -82,7 +82,7 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const &src) {
 	{
 		this->_name = src.GetName();
 		this->SetHealth(src.GetHealth());
-		this->SetEnergy(src.GetAttack());
+		this->SetEnergy(src.GetEnergy());
 		this->SetAttack(src.GetAttack());
 	}
 	return (*this);
@@ -95,7 +95,7 @@ void	ClapTrap::attack(const std::string &target) {
 		if (GetEnergy() > 0)
 		{
 			SetEnergy(GetEnergy() - 1);
-			std::cout << _FOREST_GREEN "Claptrap " << this->GetName() << "attack " << target
+			std::cout << _FOREST_GREEN "Claptrap " << this->GetName() << " attack " << target
 			<< ", causing " << this->GetAttack() << " damages !" _END << std::endl;
 		}
 		else
@@ -105,21 +105,22 @@ void	ClapTrap::attack(const std::string &target) {
 	}
 	else
 	{
-		std::cout << _FOREST_GREEN "ClapTrap's " << GetName()<<  " has no health left. I mean... he's dead !" _END << std::endl;
+		std::cout << _FOREST_GREEN "ClapTrap's " << GetName()<<  " has no health left. I mean... he's dead ! Dead cant' attack, this is not The Walking Dead" _END << std::endl;
 	}
 	return ;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-    if (GetHealth() > 0)
+    if (GetHealth() > amount)
 	{
-        SetHealth(GetHealth() - 1);
+        SetHealth(GetHealth() - amount);
         std::cout << _FOREST_GREEN "ClapTrap " << GetName() << " has been attacked and loses " 
                   << amount << " Health's point !" _END << std::endl;
     }
 	else
 	{
+		SetHealth(0);
 		std::cout << _FOREST_GREEN "ClapTrap's " << GetName()<<  " has no health left. I mean... he's dead !" _END << std::endl;
     }
 	return ;
