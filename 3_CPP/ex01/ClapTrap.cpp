@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:48 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/19 15:58:19 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:42:58 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 ClapTrap::ClapTrap(void) : _health(10), _energy(10), _attack(0) {
 
-	std::cout << _YELLOW "Default Constructor Called" _END << std::endl;
+	std::cout << _YELLOW "ClapTrap Default Constructor Called" _END << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _attack(0) {
 
-	std::cout << _YELLOW "Parametric Constructor Called" _END << std::endl;
+	std::cout << _YELLOW "Claptrap Parametric Constructor Called" _END << std::endl;
 	return ;
 }
 
@@ -33,7 +33,7 @@ ClapTrap::ClapTrap(ClapTrap const &src) : _name(src._name) {
 
 ClapTrap::~ClapTrap(void) {
 
-	std::cout << _YELLOW "Destructor Called" _END << std::endl;
+	std::cout << _YELLOW "ClapTrap Destructor Called" _END << std::endl;
 	return ;
 }
 

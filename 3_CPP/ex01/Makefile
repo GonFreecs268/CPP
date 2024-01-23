@@ -6,13 +6,13 @@
 #    By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 17:50:50 by jaristil          #+#    #+#              #
-#    Updated: 2024/01/19 16:48:53 by jaristil         ###   ########.fr        #
+#    Updated: 2024/01/22 12:55:20 by jaristil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------- Program ----------- #
 
-NAME		:= ClapTrap
+NAME		:= ScavTrap
 C+			:= c++
 FLAGS		:= -Wall -Wextra -Werror -MMD -std=c++98
 
@@ -32,7 +32,7 @@ END=\033[0m
 # ----------- Files ----------- #
 
 SRC			:= 	main.cpp \
-				ClapTrap.cpp \
+				ClapTrap.cpp ScavTrap.cpp
 				
 OBJ			:=$(SRC:.cpp=.o)
 OBJ			:=$(addprefix $(OBJ_DIR), $(OBJ))

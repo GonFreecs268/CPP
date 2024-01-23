@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:52:57 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/19 17:57:12 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:33:22 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ class	ScavTrap : public ClapTrap
 	
 	ScavTrap& operator=(ScavTrap const &src);
 	
-	
+	void	attack(const std::string &target);
+	void	guardGate(void);
 };
