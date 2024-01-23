@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:48 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/22 15:15:52 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:10:59 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(void) : _health(10), _energy(10), _attack(0) {
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _attack(0) {
 
-	std::cout << _YELLOW "Claptrap Parametric Constructor Called" _END << std::endl;
+	std::cout << _YELLOW "Claptrap Parametric Constructor Called: " << GetName() <<  _END << std::endl;
 	return ;
 }
 
@@ -115,7 +115,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
     if (GetHealth() > amount)
 	{
         SetHealth(GetHealth() - amount);
-        std::cout << _FOREST_GREEN "ClapTrap " << GetName() << " has been attacked and loses " 
+        std::cout << _FOREST_GREEN "ClapTrap " << this->GetName() << " has been attacked and loses " 
                   << amount << " Health's point !" _END << std::endl;
     }
 	else

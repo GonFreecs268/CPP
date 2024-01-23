@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:47:22 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/22 15:22:00 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:00:58 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,4 @@ void	FragTrap::highFivesGuys(void) {
 		std::cout << _FOREST_GREEN "FragTrap " << GetName() << " is not working anymore and cannot high five you, sorry..." _END << std::endl;
 	}
 }
+

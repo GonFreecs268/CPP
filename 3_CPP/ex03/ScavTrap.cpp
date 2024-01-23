@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:52:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/22 14:50:02 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:00:48 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ScavTrap::attack(const std::string &target) {
 		if (GetEnergy() > 0)
 		{
 			SetEnergy(GetEnergy() - 1);
-			std::cout << _FOREST_GREEN "ScavTrap " << this->GetName() << " attack " << target
+			std::cout << _FOREST_GREEN "ScavTrap " << this->_name << " attack " << target
 			<< ", causing " << this->GetAttack() << " damages !" _END << std::endl;
 		}
 		else
