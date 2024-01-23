@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:47:22 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/23 15:00:58 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:30:33 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 FragTrap::FragTrap(void) : ClapTrap() {
 
-	_name = "";
 	_health = 100;
 	_energy = 100;
 	_attack = 30;
@@ -28,7 +27,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	_health = 100;
 	_energy = 100;
 	_attack = 30;
-	std::cout << _YELLOW "FragTrap Parametric Constructor Called: " << this->GetName() << _END << std::endl;
+	std::cout << _YELLOW "FragTrap Parametric Constructor Called: " << _name << _END << std::endl;
 	return ;
 }
 
@@ -52,13 +51,14 @@ FragTrap::~FragTrap(void) {
 FragTrap& FragTrap::operator=(FragTrap const &src) {
 
 	std::cout << _YELLOW "FragTrap Copy Assignement Operator Called" _END << std::endl;
-	if (this != &src)
-	{
-		this->_name = src.GetName();
-		this->SetHealth(src.GetHealth());
-		this->SetEnergy(src.GetEnergy());
-		this->SetAttack(src.GetAttack());
-	}
+	// if (this != &src)
+	// {
+	// 	this->_name = src.GetName();
+	// 	this->SetHealth(src.GetHealth());
+	// 	this->SetEnergy(src.GetEnergy());
+	// 	this->SetAttack(src.GetAttack());
+	// }
+	ClapTrap::operator=(src);
 	return (*this);
 }
 
@@ -86,13 +86,12 @@ void	FragTrap::attack(const std::string &target) {
 
 void	FragTrap::highFivesGuys(void) {
 
-	if (GetHealth() > 0)
+	if (_health > 0)
 	{
-		std::cout << _FOREST_GREEN "FragTrap " << GetName() << " give you a high five for the good times you shared wiht it !" _END << std::endl;	
+		std::cout << _FOREST_GREEN "FragTrap " << _name << " give you a high five for the good times you shared wiht it !" _END << std::endl;	
 	}
 	else
 	{
-		std::cout << _FOREST_GREEN "FragTrap " << GetName() << " is not working anymore and cannot high five you, sorry..." _END << std::endl;
+		std::cout << _FOREST_GREEN "FragTrap " << _name << " is not working anymore and cannot high five you, sorry..." _END << std::endl;
 	}
 }
-

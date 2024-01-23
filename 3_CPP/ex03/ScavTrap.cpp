@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:52:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/23 15:00:48 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:26:38 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap() {
 
-	_name = "";
+	// _name = "";
 	_health = 100;
 	_energy = 50;
 	_attack = 20;
@@ -24,11 +24,11 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	
-	_name = name;
+	// _name = name;
 	_health = 100;
 	_energy = 50;
 	_attack = 20;
-	std::cout << _YELLOW "Scavtrap Parametric Constructor Called: " << this->GetName() << _END << std::endl;
+	std::cout << _YELLOW "Scavtrap Parametric Constructor Called: " << _name << _END << std::endl;
 	return ;
 }
 
@@ -55,8 +55,8 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &src) {
 	if (this != &src)
 	{
 		this->_name = src.GetName();
-		this->SetHealth(src.GetHealth());
-		this->SetEnergy(src.GetEnergy());
+		this->SetHealth(src._health);
+		this->SetEnergy(src._energy);
 		this->SetAttack(src.GetAttack());
 	}
 	return (*this);
@@ -64,34 +64,34 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &src) {
 
 void	ScavTrap::attack(const std::string &target) {
 
-	if (GetHealth() > 0)
+	if (_health > 0)
 	{
-		if (GetEnergy() > 0)
+		if (_energy > 0)
 		{
-			SetEnergy(GetEnergy() - 1);
-			std::cout << _FOREST_GREEN "ScavTrap " << this->_name << " attack " << target
-			<< ", causing " << this->GetAttack() << " damages !" _END << std::endl;
+			_energy--;
+			std::cout << _FOREST_GREEN "ScavTrap " << _name << " attack " << target
+			<< ", causing " << _attack << " damages !" _END << std::endl;
 		}
 		else
 		{
-			std::cout << _FOREST_GREEN "ScavTrap " << GetName() << " needs energy to attack!" _END << std::endl;
+			std::cout << _FOREST_GREEN "ScavTrap " << _name << " needs energy to attack!" _END << std::endl;
 		}
 	}
 	else
 	{
-		std::cout << _FOREST_GREEN "ScavTrap's " << GetName()<<  " has no health left. I mean... he's dead ! Dead cant' attack, this is not The Walking Dead" _END << std::endl;
+		std::cout << _FOREST_GREEN "ScavTrap's " << _name <<  " has no health left. I mean... he's dead ! Dead cant' attack, this is not The Walking Dead" _END << std::endl;
 	}
 	return ;
 }
 
 void	ScavTrap::guardGate(void) {
 	
-		if (GetHealth() > 0)
+		if (_health > 0)
 		{
-		std::cout << _FOREST_GREEN "ScavTrap " << GetName() << " is now in Gate keeper mode !" _END << std::endl;
+		std::cout << _FOREST_GREEN "ScavTrap " << _name << " is now in Gate keeper mode !" _END << std::endl;
 		}
 		else
 		{
-		std::cout << _FOREST_GREEN "ScavTrap " << GetName() << " can no longer react as it is out of order" _END << std::endl;
+		std::cout << _FOREST_GREEN "ScavTrap " << _name << " can no longer react as it is out of order" _END << std::endl;
 		}
 }

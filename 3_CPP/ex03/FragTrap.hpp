@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:47:25 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/23 14:59:22 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:52:59 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ClapTrap.hpp"
 
-class	FragTrap : virtual public ClapTrap
+class	FragTrap : public virtual ClapTrap
 {
 	public :
 

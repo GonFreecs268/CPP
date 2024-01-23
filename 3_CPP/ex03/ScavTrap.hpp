@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:52:57 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/23 14:59:39 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:41:22 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ClapTrap.hpp"
 #include "colors.hpp"
 
-class	ScavTrap : virtual public ClapTrap
+class	ScavTrap : public virtual ClapTrap
 {
 	public :
 

@@ -6,18 +6,18 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:32:53 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/23 15:05:07 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:24:23 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap(), FragTrap(), ScavTrap(), _name("default_clap_name") {
+DiamondTrap::DiamondTrap(void) : ClapTrap("default_clap_name"), _name("default") {
 
 	_health = FragTrap::GetHealth();
 	_energy = ScavTrap::GetEnergy();
 	_attack = FragTrap::GetAttack();
-	this->ClapTrap::_name = _name + "_clap_name";
+	ClapTrap::_name = _name + "_clap_name";
 	std::cout << _YELLOW "DiamondTrap Default Constructor Called" _END << std::endl;
 	return ;
 }
@@ -34,11 +34,11 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name") {
 
 DiamondTrap::DiamondTrap(DiamondTrap const &src) : ClapTrap(src._name) {
 	
-	_name = src._name;
-	_health = src._health;
-	_energy = src._energy;
-	_attack = src._attack;
-	// *this = src;
+	// _name = src._name;
+	// _health = src._health;
+	// _energy = src._energy;
+	// _attack = src._attack;
+	*this = src;
 	std::cout << _YELLOW "DiamondTrap Copy Constructor Called" _END << std::endl;
 	return ;
 }
@@ -51,10 +51,11 @@ DiamondTrap::~DiamondTrap(void) {
 
 DiamondTrap& DiamondTrap::operator=(DiamondTrap const &src) {
 
+	// ClapTrap::operator=(src);
 	std::cout << _YELLOW "DiamondTrap Copy Assignement Operator Called" _END << std::endl;
 	if (this != &src)
 	{
-		this->_name = src.GetName();
+		this->_name = src._name;
 		this->ClapTrap::_name = src.ClapTrap::_name;
 		this->_health = src.FragTrap::_health;
 		this->_energy = src.ScavTrap::_energy;
@@ -65,10 +66,10 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const &src) {
 
 void	DiamondTrap::attack(const std::string &target) {
 	
-	this->ScavTrap::attack(target);
+	ScavTrap::attack(target);
 }
 
-void DiamondTrap::whoamI(void) {
+void DiamondTrap::whoAmI(void) {
 	
     if (GetHealth() > 0)
 	{
@@ -77,4 +78,3 @@ void DiamondTrap::whoamI(void) {
     }
     return ;
 }
-
