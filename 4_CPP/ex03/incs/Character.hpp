@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:23:49 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/26 19:24:30 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:05:23 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ class Character : public ICharacter
 	void						equip(AMateria* m);
 	void						unequip(int idx);
 	void						use(int idx, ICharacter& target);
-
-	void						printMateria() const;
 	
 	private :
 

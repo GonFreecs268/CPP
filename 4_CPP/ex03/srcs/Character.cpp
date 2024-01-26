@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:23:49 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/26 19:30:35 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:08:34 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ void	Character::use(int idx, ICharacter& target) {
 	else
 		std::cout << _RED "Cannot use any materia. There is no materia in index: " << idx << _END << std::endl;
 }
-
