@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:25:57 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/26 16:04:25 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/27 15:30:04 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ class Cure : public AMateria
 
     Cure();
     Cure(Cure const & src);
-    Cure& operator=(Cure const &src);
     ~Cure();
+	
+    Cure& operator=(Cure const &src);
 
-	AMateria*	clone() const;
-	void				use(ICharacter& target);
+	virtual AMateria*			clone() const;
+	virtual void				use(ICharacter& target);
 };
 
 #endif

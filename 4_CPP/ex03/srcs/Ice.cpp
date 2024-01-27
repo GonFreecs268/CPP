@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:19:57 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/26 16:06:08 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:28:52 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,3 @@ void	Ice::use(ICharacter &target) {
 	
 	std::cout << _FOREST_GREEN << "shoot an ice bolt at " << target.getName() << _END << std::endl;
 }
-
-
-
-
-
-

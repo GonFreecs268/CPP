@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:23:49 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/26 20:08:34 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/27 20:17:48 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 int	Character::getNbMaterias() const {
 
 	return (_nbMaterias);
+}
+
+AMateria* Character::getAMateria(int idx) const {
+
+	if (idx < 0 || idx > 3)
+		return (NULL);
+	return (_inventory[idx]);
 }
 
 std::string const &Character::getName() const {
@@ -35,7 +42,9 @@ Character::Character(Character const &src) : _name(src.getName()), _nbMaterias(s
 	for (int i = 0; i < 4; i++)
 	{
 		if (src._inventory[i])
+		{
 			_inventory[i] = src._inventory[i]->clone();
+		}
 		else
 			_inventory[i] = NULL;
 	}
@@ -50,15 +59,19 @@ Character::~Character() {
 
 Character&	Character::operator=(Character const &src)
 {
-	std::cout << "Character Assignment operator called" << std::endl;
+	std::cout << _YELLOW "Character Assignment operator called" _END << std::endl;
 		if (this != &src)
 	{
 		_name = src._name;
 		_nbMaterias = src._nbMaterias;
 		for(int i = 0; i < 4; i++)
 		{
+			if (_inventory[i])
+				delete _inventory[i];
 			if (src._inventory[i])
+			{
 				_inventory[i] = src._inventory[i]->clone();
+			}
 			else
 				_inventory[i] = NULL;
 		}
@@ -74,15 +87,15 @@ void	Character::equip(AMateria* m) {
 		return ;
 	}
 	if (_nbMaterias == 0)
-		_inventory[0] = m->clone();
+		_inventory[0] = m;
 	else if (_nbMaterias < 4)
 	{
 		for (int i = 0; i < 4; i++)
 		{
 			if (!_inventory[i])
 			{
-				_inventory[i] = m->clone();
-				break;
+				_inventory[i] = m;
+				break ;
 			}
 		}
 	}
@@ -93,9 +106,8 @@ void	Character::unequip(int idx) {
 	
 	if (idx >= 0 && idx < 4 && _inventory[idx])
 	{
-		delete _inventory[idx];
 		_inventory[idx] = NULL;
-		this->_nbMaterias--;
+		_nbMaterias--;
 	}
 	else
 	{

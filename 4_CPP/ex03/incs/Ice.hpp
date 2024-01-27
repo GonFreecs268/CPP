@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:19:57 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/26 16:01:30 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:39:59 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class Ice : public AMateria
     Ice& operator=(Ice const & hrs);
     ~Ice();
 
-	AMateria*	clone() const;
+	// not sure need virtual because Amateria is virtual too
+	virtual AMateria*			clone() const;
 	void				use(ICharacter& target);
 };
 
