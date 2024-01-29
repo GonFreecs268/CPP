@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 20:08:26 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/27 19:40:33 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/27 20:38:26 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class MateriaSource : public IMateriaSource
 
     MateriaSource();
     MateriaSource(MateriaSource const &src);
-    virtual ~MateriaSource(); // not sure to virtual
+    ~MateriaSource(); // not sure to virtual
 	
     MateriaSource& operator=(MateriaSource const &src);
 
