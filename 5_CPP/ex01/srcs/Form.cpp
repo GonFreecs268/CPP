@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:38:41 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/30 19:05:48 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:42:22 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ Form&	Form::operator=(Form const &rhs) {
 std::ostream & operator<<(std::ostream & o, Form const &rhs) {
 	
 	o << "Form " << rhs.getName() << (rhs.getIsSigned() ? " (signed) | " : " (not signed) | ")
-	<< "Grade to sign: "<< rhs.getGrade() << " | Grade to execute: "
+	<< "Grade required to sign: "<< rhs.getGrade() << " | Grade required to execute: "
 	<< rhs.getExecuteGrade();
 	
 	return (o);
@@ -85,10 +85,18 @@ const char *Form::GradeTooLowException::what() const throw() {
 	return (_RED "FORM GRADE TO LOW !" _END);
 }
 
+const char *Form::AlreadySigned::what() const throw() {
+
+	return (_RED "FORM ALREADY SIGNED" _END);
+}
+
+
 void	Form::beSigned(Bureaucrat const &to_sign)
 {
-	if (to_sign.getGrade() <= this->_grade)
+	if (this->_is_signed == true)
+		throw Form::AlreadySigned();
+	else if (to_sign.getGrade() <= this->_grade)
 		this->_is_signed = true;
 	else
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
