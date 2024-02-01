@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:05:04 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/31 19:53:19 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:59:12 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,70 +15,223 @@
 #include "../incs/PresidentialPardonForm.hpp"
 #include "../incs/ShrubberyCreationForm.hpp"
 
-int	main(void)
+void ShrubberyOK()
 {
+	Bureaucrat Nico("Nico", 1);
+    ShrubberyCreationForm Home_N("Home_N");
+	try 
+	{
+        Nico.signForm(Home_N);
+    } 
+	catch (std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+    try 
+	{
+        Nico.executeForm(Home_N);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void ShrubberyKO() 
+{
+    Bureaucrat Jules("Jules", 138);
+    ShrubberyCreationForm Home_J("Home_J");
+    try 
+	{
+        Jules.signForm(Home_J);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+    try 
+	{
+        Jules.executeForm(Home_J);
+    } 
+	catch (const std::exception &e)
+	{
+        std::cerr << e.what() << '\n';
+    }
+    // try 
+	// {
+    //     Jules.IncrementGrade();
+    //     Jules.executeForm(Home_J);
+    // } 
+	// catch (const std::exception &e) 
+	// {
+    //     std::cerr << e.what() << '\n';
+    // }
+}
+
+void RobotomyOK() 
+{
+    Bureaucrat Alan("Alan", 45);
+    RobotomyRequestForm home_A("home_TA");
 	try
 	{
-		std::cout << "	Let's create things" << std::endl;
-		PresidentialPardonForm form1("Alfred Dreyfus");
-		RobotomyRequestForm form2("Isaac Assimov");
-		ShrubberyCreationForm form3("Garden");
-		RobotomyRequestForm form4("Daneel Olivaw");
-		Bureaucrat bur1("Maxence, practicly prime minister,", 4);
-		Bureaucrat bur2("Vincent, member of the PM office,", 10);
-		Bureaucrat bur3("Damien, a middle manager,", 30);
-		Bureaucrat bur4("Thomas, a middle gouverment worker,", 50);
-		Bureaucrat bur5("Jean, a low employee,", 80);
-		Bureaucrat bur6("Alexandre, basicaly nobody in the administration,", 140);
-		Bureaucrat bur7("Adrien, just better than an intern,", 147);
-		std::cout << std::endl;
-
-		std::cout << "	Let's have a look at my forms" << std::endl;
-		std::cout << form1 << std::endl;
-		std::cout << form2 << std::endl;
-		std::cout << form3 << std::endl;
-		std::cout << std::endl;
-
-		std::cout << "	Let's test of the ShrubberyCreationForm" << std::endl;
-		bur7.signForm(form3);
-		std::cout << form3 << std::endl;
-		bur6.executeForm(form3);
-		bur6.signForm(form3);
-		std::cout << form3 << std::endl;
-		bur6.executeForm(form3);
-		bur5.executeForm(form3);
-		std::cout << std::endl;
-		
-		std::cout << "	Let's test of the RobotomyRequestForm" << std::endl;
-		bur5.signForm(form2);
-		std::cout << form2 << std::endl;
-		bur4.executeForm(form2);
-		bur4.signForm(form2);
-		std::cout << form2 << std::endl;
-		bur4.executeForm(form2);
-		bur3.executeForm(form2);
-		bur3.signForm(form4);
-		std::cout << form4 << std::endl;
-		bur3.executeForm(form4);
-		bur3.executeForm(form4);
-		bur3.executeForm(form4);
-		std::cout << std::endl;
-
-		std::cout << "	Test of the PresidentialPardonForm" << std::endl;
-		bur3.signForm(form1);
-		std::cout << form1 << std::endl;
-		bur2.executeForm(form1);
-		std::cout << form1 << std::endl;
-		bur2.signForm(form1);
-		bur2.executeForm(form1);
-		bur1.executeForm(form1);
-		std::cout << std::endl;
-
-		std::cout << "	Let's destroy everything" << std::endl;
+		Alan.signForm(home_A);
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "\e[31mException: " <<e.what() << "\e[0m" << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-	return (0);
+    try 
+	{
+        Alan.executeForm(home_A);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void RobotomyKO() 
+{
+    Bureaucrat Tiff("Tiff", 148);
+    RobotomyRequestForm Home_T("Home_T");
+    try 
+	{
+        Tiff.signForm(Home_T);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+    try 
+	{
+        Tiff.executeForm(Home_T);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void PresidentialOK() 
+{
+    Bureaucrat Tito("Tito", 5);
+    PresidentialPardonForm Home_T("Home_T");
+    try 
+	{
+        Tito.signForm(Home_T);
+    } 
+	catch (const std::exception &e)
+	{
+        std::cerr << e.what() << std::endl;
+    }
+    try 
+	{
+        Tito.executeForm(Home_T);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void PresidentialKO() 
+{
+    Bureaucrat Marie("Marie", 8);
+    PresidentialPardonForm Home_M("Home_M");
+    try 
+	{
+        Marie.signForm(Home_M);
+    } 
+	catch (const std::exception &e)
+	{
+        std::cerr << e.what() << std::endl;
+    }
+    try 
+	{
+        Marie.executeForm(Home_M);
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+int main() 
+{
+    try 
+	{
+		srand(time(0));
+        std::cout << _SILVER << "\t\t\t\t TEST \n" << _END << std::endl;
+
+        std::cout << _SILVER "1. Shrubbery Form Test - OK:" _END << std::endl;
+        try 
+		{
+            ShrubberyOK();
+        } 
+		catch (const std::exception &e) 
+		{
+            std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+        }
+        std::cout << std::endl;
+		
+        std::cout << _SILVER "2. Shrubbery Form Test - KO:" _END << std::endl;
+        try
+		{
+            ShrubberyKO();
+        } 
+		catch (const std::exception &e) 
+		{
+            std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+        }
+        std::cout << std::endl;
+
+        std::cout << _SILVER "3. Robotomy Form Test - OK:" _END << std::endl;
+        try
+		{
+            RobotomyOK();
+        } 
+		catch (const std::exception &e)
+		{
+            std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+        }
+        std::cout << std::endl;
+
+        std::cout << _SILVER "4. Robotomy Form Test - KO:" _END << std::endl;
+        try 
+		{
+            RobotomyKO();
+        } 
+		catch (const std::exception &e)
+		{
+            std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+        }
+        std::cout << std::endl;
+
+        std::cout << _SILVER "5. Presidential Form Test - OK:" _END << std::endl;
+        try 
+		{
+            PresidentialOK();
+        } 
+		catch (const std::exception &e) 
+		{
+            std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+        }
+        std::cout << std::endl;
+		
+		std::cout << _SILVER "6. Presidential Form Test - KO:" _END << std::endl;
+		try
+		{
+			PresidentialKO();
+		}
+		catch(const std::exception &e)
+		{
+            std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+		}
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cerr << _RED "Exception: " << e.what() << _END << std::endl;
+    }
+
+    return (0);
 }

@@ -1,11 +1,12 @@
-NAME = AForm
+NAME = Intern
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 OBJ_DIR = objs/
 
 SRC =	srcs/main.cpp \
 		srcs/Bureaucrat.cpp srcs/AForm.cpp \
-		srcs/PresidentialPardonForm.cpp srcs/RobotomyRequestForm.cpp srcs/ShrubberyCreationForm.cpp
+		srcs/PresidentialPardonForm.cpp srcs/RobotomyRequestForm.cpp srcs/ShrubberyCreationForm.cpp \
+		srcs/Intern.cpp
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 
 TOTAL_FILES := $(words $(SRC))
