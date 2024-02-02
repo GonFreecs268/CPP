@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:44:11 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/02 15:27:06 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:06:24 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ AForm *Intern::makeForm(std::string form_name, std::string target) {
 	AForm *form;
 	
 	int i = 0;
-	while (i)
+	while (i < 3)
 	{
 		if (form_name == form_tab[i])
 			break ;
