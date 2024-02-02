@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:44:11 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/01 20:19:23 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:27:06 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ Intern&	Intern::operator=(Intern const &rhs) {
 AForm *Intern::makeForm(std::string form_name, std::string target) {
 
 	std::string	form_tab[3] = {"presidential request", "robotomy request", "shrubbery request"};
-	AForm *form = NULL;
+	AForm *form;
 	
 	int i = 0;
-	while (i < 3)
+	while (i)
 	{
 		if (form_name == form_tab[i])
 			break ;
@@ -51,15 +51,19 @@ AForm *Intern::makeForm(std::string form_name, std::string target) {
 	{
 	case 0:
 		form = new PresidentialPardonForm(target);
+		std::cout << _FOREST_GREEN "Making Presidential Request..." _END << std::endl;
 		break ;
 	case 1:
 		form = new RobotomyRequestForm(target);
+		std::cout << _FOREST_GREEN "Making Robotomy Request..." _END << std::endl;
 		break ;
 	case 2:
 		form = new ShrubberyCreationForm(target);
+		std::cout << _FOREST_GREEN "Making Shrubbery Request..." _END << std::endl;
 		break ;
 	default:
-		std::cout << "error" << std::endl;
+		form = NULL;
+		std::cout << _RED "I dont think this is the request you want to submit..." _END << std::endl;
 		break ;
 	}
 	return (form);

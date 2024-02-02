@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:38:41 by jaristil          #+#    #+#             */
-/*   Updated: 2024/01/31 13:42:22 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:17:14 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ const char *Form::AlreadySigned::what() const throw() {
 
 	return (_RED "FORM ALREADY SIGNED" _END);
 }
-
 
 void	Form::beSigned(Bureaucrat const &to_sign)
 {

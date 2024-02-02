@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:44:11 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/01 20:01:47 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:10:40 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ class Intern
 
 	AForm	*makeForm(std::string form_name, std::string target);
 	
-	private:
 };
 
