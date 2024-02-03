@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:05:04 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/01 18:59:12 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:07:23 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ int main()
 {
     try 
 	{
-		srand(time(0));
+		// srand(time(0));
         std::cout << _SILVER << "\t\t\t\t TEST \n" << _END << std::endl;
 
         std::cout << _SILVER "1. Shrubbery Form Test - OK:" _END << std::endl;

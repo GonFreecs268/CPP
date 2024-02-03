@@ -6,11 +6,12 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:09:44 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/01 19:07:13 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:06:08 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/RobotomyRequestForm.hpp"
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm::AForm("RobotomyRequestForm", 72, 45) {
 
@@ -60,6 +61,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
     try
 	 {
         this->check_execute(executor);
+		srand(static_cast<unsigned>(time(NULL)));
         // Generate a random result for robotization (50% success rate for demonstration)
         bool success = (rand() % 2 == 0);
 
