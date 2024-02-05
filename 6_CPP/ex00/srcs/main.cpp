@@ -6,11 +6,27 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/05 18:21:09 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:19:00 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ScalarConverter.hpp"
+
+/*
+- nan/nanf : 
+		char : '' instead of impossible 
+		int: INTmin instead of impossible
+		float : nan.0f instead of nanf
+		double : nan.0 instead of nan
+
++inf/-inf :
+		char : '' instead of impossible 
+		int: INTmin instead of impossible
+		float : inf.0f instead of nanf
+		double : inf.0 instead of nan
+
+check if possible to convert to double or not (for exampl 256.25 should be impossible instead of nothing)
+*/
 
 int main(int ac, char **av) {
 

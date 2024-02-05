@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/05 18:53:14 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:18:30 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,10 +205,10 @@ void	ScalarConverter::convert(const std::string &str) {
 		}
 	}
 	
-	char	c = 0;
-	int		integer = 0;
-	float	f = 0.0f;
-	double	d = 0.0;
+	// char	c = 0;
+	// int		integer = 0;
+	// float	f = 0.0f;
+	// double	d = 0.0;
 
 	switch(type)
 	{
@@ -228,9 +228,9 @@ void	ScalarConverter::convert(const std::string &str) {
 			convertFloat(strtof(str.c_str(), NULL), str);
 			break ;
 		case DOUBLE_TYPE:
-			d = strtod(str.c_str(), NULL);
-			convertDouble(d, str);
-			// convertDouble(strtod(str.c_str(), NULL), str);
+			// d = strtod(str.c_str(), NULL);
+			// convertDouble(d, str);
+			convertDouble(strtod(str.c_str(), NULL), str);
 			break ;
 		default:
 			print_error("char");
