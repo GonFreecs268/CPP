@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/06 21:10:22 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:08:19 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,18 @@ void ScalarConverter::printInt(int integer) {
 
 void ScalarConverter::printFloat(float f) {
 	
-	std::cout << "float : " << f << ".0f" << std::endl;
+	std::cout << "float : " << f << ".f" << std::endl;
 }
+
+// void ScalarConverter::printFloat(float f) {
+	
+//     if (std::abs(f) > 1.0e6 || (std::abs(f) < 1.0e-6 && std::abs(f) > 0.0)) {
+//         std::cout << std::scientific << std::setprecision(1);
+//     } else {
+//         std::cout << std::fixed << std::setprecision(1);
+//     }
+//     std::cout << "float : " << f << "f" << std::endl;
+// }
 
 void ScalarConverter::printDouble(double d) {
 	
@@ -185,6 +195,8 @@ void	ScalarConverter::convertFloat(double d, const std::string &str) {
 	{
 		std::cout << _RED "char : impossible" _END << std::endl;
 		std::cout << _RED "int : impossible" _END << std::endl;
+		// dirty but work but still do some change if managabled
+		// std::cout << _FOREST_GREEN "float: " << static_cast<float>(d) << std::endl; it can be an idea but what for inff / nanf
 		std::cout << _FOREST_GREEN "float: " << str << std::endl;
 		// std::string doubleStr = str.substr(0, str.length() - 1);
 		// std::cout << _FOREST_GREEN "double: " << doubleStr << std::endl;
@@ -212,18 +224,9 @@ void	ScalarConverter::convertFloat(double d, const std::string &str) {
 	}
 }
 
-// std::cerr << "THE FLOAT IN INT : " << f << std::endl;
-// std::cerr << "INT_MAX : " << static_cast<float>(INT_MAX) << std::endl;
-// std::cerr << "INT_MIN : " << static_cast<float>(INT_MIN) << std::endl;
-
 void	ScalarConverter::convertDouble(double d, const std::string &str) {
 
-	std::string lowercaseStr = str;
-	for (size_t i = 0; i < lowercaseStr.length(); i++)
-	{
-		lowercaseStr[i] = std::tolower(lowercaseStr[i]);
-	}
-	if (lowercaseStr == "-inf" || lowercaseStr == "+inf" || lowercaseStr == "nan")
+	if (std::isinf(static_cast<float>(d)) || std::isnan(static_cast<float>(d)))
 	{
 		std::cout << _RED "char : impossible" _END << std::endl;
 		std::cout << _RED "int : impossible" _END << std::endl;
@@ -231,9 +234,21 @@ void	ScalarConverter::convertDouble(double d, const std::string &str) {
 		std::cout << _FOREST_GREEN "double: " << str << _END << std::endl;
 	}
 	else
-	{
-    	printChar(static_cast<char>(d));
-    	printInt(static_cast<int>(d));
+	{	
+		if ((static_cast<int>(d) < 127 && static_cast<int>(d) >= -128) && isprint(static_cast<int>(d)))
+    		printChar(static_cast<char>(d));
+		else if (static_cast<int>(d) > 255 || static_cast<int>(d) < 0)
+			print_error("char");
+		else
+			std::cout << _RED "char: Non displayable" _END << std::endl;
+		if (d > static_cast<double>(INT_MAX) || d < static_cast<double>(INT_MIN))
+			print_error("int");
+		else
+    		printInt(static_cast<int>(d));
+		// if (std::abs(d) > 1.0e6 || (std::abs(d) < 1.0e-6 && std::abs(d) > 0.0))
+		// 	std::cout << std::scientific << std::setprecision(1);
+		// else
+		// 	std::cout << std::fixed << std::setprecision(1);
     	printFloat(static_cast<float>(d));
     	printDouble(d);
 	}
