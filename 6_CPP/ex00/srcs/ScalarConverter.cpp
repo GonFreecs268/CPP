@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/05 19:18:30 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/06 21:10:22 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,6 @@ ScalarConverter&	ScalarConverter::operator=(ScalarConverter const &rhs) {
 /*                   			  Méthodes                 		              */
 /* ************************************************************************** */
 
-bool	ScalarConverter::isChar(std::string str) {
-
-	if (str.length() == 1 && !isdigit(str[0]))
-		return true;
-	return false;
-}
-
 bool ScalarConverter::isInt(std::string str) {
 
 	size_t	i = 0;
@@ -61,9 +54,14 @@ bool ScalarConverter::isInt(std::string str) {
 		i++;
 	while (isdigit(str[i]))
 		i++;
-	// if (str.size() > 11)
-	// 	throw ScalarConverter::IntOverflowException();
 	if (i == str.length())
+		return true;
+	return false;
+}
+
+bool	ScalarConverter::isChar(std::string str) {
+
+	if (str.length() == 1 && !isdigit(str[0]))
 		return true;
 	return false;
 }
@@ -145,45 +143,100 @@ void ScalarConverter::printDouble(double d) {
 
 void	ScalarConverter::convertChar(char c) {
 
-	// add protection if !c need ? because switch + is char check
 	printChar(c);
 	printInt(static_cast<int>(c));
 	printFloat(static_cast<float>(c));
 	printDouble(static_cast<double>(c));
 }
 
-void	ScalarConverter::convertInt(int integer) {
+void	ScalarConverter::convertInt(int integer, const std::string &str) {
 
-	// char is >= 0 <= 255
-	if (integer < 256 && isprint(integer))
+	(void)str;
+	if (integer >= (INT_MIN + 1) && integer <= INT_MAX)
 	{
-		printChar(static_cast<char>(integer));
+		if ((integer < 127 && integer >= -128) && isprint(integer))
+		{
+			printChar(integer);
+		}
+		else if (integer > 255 || integer < 0)
+			print_error("char");
+		else
+		{
+			std::cout << _RED "char: Non displayable" _END << std::endl;
+		}
+		printInt(static_cast<int>(integer));
+		printFloat(static_cast<float>(integer));
+		printDouble(static_cast<double>(integer));
 	}
 	else
 	{
-		std::cout << _RED "char: Non displayable" _END << std::endl;
+		print_error("char OVERFLOW");
+		print_error("int OVERFLOW");
+		print_error("float OVERFLOW");
+		print_error("double OVERFLOW");
 	}
-	printInt(integer);
-	printFloat(static_cast<float>(integer));
-	printDouble(static_cast<double>(integer));
 }
 
-void	ScalarConverter::convertFloat(float f, const std::string &str) {
+void	ScalarConverter::convertFloat(double d, const std::string &str) {
     
-	(void)str;
-    printChar(static_cast<char>(f));
-    printInt(static_cast<int>(f));
-    printFloat(f);
-    printDouble(static_cast<double>(f));
+	float	f = static_cast<float>(d);
+
+	if (std::isinf(f) || std::isnan(f))
+	{
+		std::cout << _RED "char : impossible" _END << std::endl;
+		std::cout << _RED "int : impossible" _END << std::endl;
+		std::cout << _FOREST_GREEN "float: " << str << std::endl;
+		// std::string doubleStr = str.substr(0, str.length() - 1);
+		// std::cout << _FOREST_GREEN "double: " << doubleStr << std::endl;
+		std::cout << _FOREST_GREEN "double: " << static_cast<double>(f) << std::endl;	
+	}
+	else
+	{
+		if ((static_cast<int>(f) < 127 && static_cast<int>(f) >= -128) && isprint(static_cast<int>(f)))
+    		printChar(static_cast<char>(f));
+		else if (static_cast<int>(f) > 255 || static_cast<int>(f) < 0)
+			print_error("char");
+		else
+			std::cout << _RED "char: Non displayable" _END << std::endl;
+		if (f > static_cast<float>(INT_MAX) || f < static_cast<float>(INT_MIN))
+			print_error("int");
+		else
+		{
+			if (d > static_cast<double>(INT_MAX) || d < static_cast<double>(INT_MIN))
+				print_error("int");
+			else
+				printInt(static_cast<int>(d));
+		}
+    	printFloat(f);
+    	printDouble(static_cast<double>(f));
+	}
 }
+
+// std::cerr << "THE FLOAT IN INT : " << f << std::endl;
+// std::cerr << "INT_MAX : " << static_cast<float>(INT_MAX) << std::endl;
+// std::cerr << "INT_MIN : " << static_cast<float>(INT_MIN) << std::endl;
 
 void	ScalarConverter::convertDouble(double d, const std::string &str) {
 
-	(void)str;
-    printChar(static_cast<char>(d));
-    printInt(static_cast<int>(d));
-    printFloat(static_cast<float>(d));
-    printDouble(d);
+	std::string lowercaseStr = str;
+	for (size_t i = 0; i < lowercaseStr.length(); i++)
+	{
+		lowercaseStr[i] = std::tolower(lowercaseStr[i]);
+	}
+	if (lowercaseStr == "-inf" || lowercaseStr == "+inf" || lowercaseStr == "nan")
+	{
+		std::cout << _RED "char : impossible" _END << std::endl;
+		std::cout << _RED "int : impossible" _END << std::endl;
+		std::cout << _FOREST_GREEN "float: " << str + 'f' << _END << std::endl;
+		std::cout << _FOREST_GREEN "double: " << str << _END << std::endl;
+	}
+	else
+	{
+    	printChar(static_cast<char>(d));
+    	printInt(static_cast<int>(d));
+    	printFloat(static_cast<float>(d));
+    	printDouble(d);
+	}
 }
 
 void	ScalarConverter::convert(const std::string &str) {
@@ -204,32 +257,18 @@ void	ScalarConverter::convert(const std::string &str) {
 			break;
 		}
 	}
-	
-	// char	c = 0;
-	// int		integer = 0;
-	// float	f = 0.0f;
-	// double	d = 0.0;
-
 	switch(type)
 	{
 		case CHAR_TYPE:
-			// c = str[0];
-			// convertChar(c);
 			convertChar(str[0]);
 			break ;
 		case INT_TYPE:
-			// integer = atoi(str.c_str());
-			// convertInt(integer);
-			convertInt(atoi(str.c_str()));
+			convertInt(static_cast<int>(strtod(str.c_str(), NULL)), str);
 			break ;
 		case FLOAT_TYPE:
-			// f = strtof(str.c_str(), NULL);
-			// convertFloat(f, str);
-			convertFloat(strtof(str.c_str(), NULL), str);
+			convertFloat(strtod(str.c_str(), NULL), str);
 			break ;
 		case DOUBLE_TYPE:
-			// d = strtod(str.c_str(), NULL);
-			// convertDouble(d, str);
 			convertDouble(strtod(str.c_str(), NULL), str);
 			break ;
 		default:

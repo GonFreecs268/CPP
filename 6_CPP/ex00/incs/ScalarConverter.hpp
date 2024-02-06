@@ -6,16 +6,21 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/05 17:29:28 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:34:21 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <iomanip>
+#include <ostream>
+# include <sstream>
 #include <string>
 #include <cctype> // std::tolower
-// #include <cmath> // isnan // isinf
+#include <limits.h> // INT_MIN/MAX
+#include <limits> // std::numeric
+#include <cmath> // isnan // isinf
 #include "colors.hpp"
 #include <stdio.h> // NULL
 #include <stdlib.h> //strtof // atoi
@@ -46,9 +51,10 @@ class ScalarConverter
 	static void	printDouble(double d);
 	
 	static void	print_error(const std::string &type);
+	
 	static void	convertChar(char c);
-	static void	convertInt(int integer);
-	static void	convertFloat(float f, const std::string &str);
+	static void	convertInt(int integer, const std::string &str);
+	static void	convertFloat(double d, const std::string &str);
 	static void	convertDouble(double d, const std::string &str);
 	
 	public :
