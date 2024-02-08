@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/06 22:02:28 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:56:02 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <string>
 #include <cctype> // std::tolower
 #include <limits.h> // INT_MIN/MAX
-// #include <limits> // std::numeric
 #include <cmath> // isnan // isinf
 #include "colors.hpp"
 #include <stdio.h> // NULL

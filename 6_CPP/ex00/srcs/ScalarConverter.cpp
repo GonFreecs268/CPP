@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/06 22:08:19 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:56:29 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,32 +123,22 @@ void	ScalarConverter::print_error(const std::string &type) {
 
 void ScalarConverter::printChar(char c) {
 	
-	std::cout << "char : '" << c << "'" << std::endl;
+	std::cout << _FOREST_GREEN "char : '" << c << "'" << _END << std::endl;
 }
 
 void ScalarConverter::printInt(int integer) {
 	
-	std::cout << "int : " << integer << std::endl;
+	std::cout << _FOREST_GREEN "int : " << integer << _END << std::endl;
 }
 
 void ScalarConverter::printFloat(float f) {
 	
-	std::cout << "float : " << f << ".f" << std::endl;
+	std::cout << _FOREST_GREEN "float : " << f << ".0f" << _END << std::endl;
 }
-
-// void ScalarConverter::printFloat(float f) {
-	
-//     if (std::abs(f) > 1.0e6 || (std::abs(f) < 1.0e-6 && std::abs(f) > 0.0)) {
-//         std::cout << std::scientific << std::setprecision(1);
-//     } else {
-//         std::cout << std::fixed << std::setprecision(1);
-//     }
-//     std::cout << "float : " << f << "f" << std::endl;
-// }
 
 void ScalarConverter::printDouble(double d) {
 	
-	std::cout << "double : " << d << ".0" << std::endl;
+	std::cout << _FOREST_GREEN "double : " << d << ".0" << _END << std::endl;
 }
 
 void	ScalarConverter::convertChar(char c) {
@@ -198,8 +188,6 @@ void	ScalarConverter::convertFloat(double d, const std::string &str) {
 		// dirty but work but still do some change if managabled
 		// std::cout << _FOREST_GREEN "float: " << static_cast<float>(d) << std::endl; it can be an idea but what for inff / nanf
 		std::cout << _FOREST_GREEN "float: " << str << std::endl;
-		// std::string doubleStr = str.substr(0, str.length() - 1);
-		// std::cout << _FOREST_GREEN "double: " << doubleStr << std::endl;
 		std::cout << _FOREST_GREEN "double: " << static_cast<double>(f) << std::endl;	
 	}
 	else
@@ -245,10 +233,6 @@ void	ScalarConverter::convertDouble(double d, const std::string &str) {
 			print_error("int");
 		else
     		printInt(static_cast<int>(d));
-		// if (std::abs(d) > 1.0e6 || (std::abs(d) < 1.0e-6 && std::abs(d) > 0.0))
-		// 	std::cout << std::scientific << std::setprecision(1);
-		// else
-		// 	std::cout << std::fixed << std::setprecision(1);
     	printFloat(static_cast<float>(d));
     	printDouble(d);
 	}
@@ -263,7 +247,8 @@ void	ScalarConverter::convert(const std::string &str) {
 
 	int type = -1;
 	bool(*Type[4])(std::string str) = {isChar, isInt, isFloat, isDouble};
-	
+	// #include <limits> // std::numeric
+
 	for (int i = 0; i < 4; i++)
 	{
 		if (Type[i](str))
