@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:18:07 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/09 16:49:51 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:54:50 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int main() {
         	std::cout << _SILVER _YELLOW "\nCreating an empty Array:" _END << std::endl;
 	
         	// Affichage de la taille de l'Array vide
+			// Test de l'exception pour size NULL
         	std::cout << _FOREST_GREEN "Size of emptyArray: " << emptyArray.size() << _END << std::endl;
 		}
 		catch (const Array<int>::EmptySize &e)
@@ -50,7 +51,7 @@ int main() {
 		{
         	// Test de l'exception pour un index hors limites
         	std::cout << _SILVER _YELLOW "\nTrying to access out-of-bounds element:" _END << std::endl;
-        	std::cout << intArray[10] << std::endl; // Ce test devrait lancer une exception
+        	std::cout << intArray[10] << std::endl; 
 		}
 		catch(const Array<int>::WrongIndex &e)
 		{
