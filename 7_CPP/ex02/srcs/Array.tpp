@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:05:02 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/08 19:21:09 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:45:08 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Array<T>::Array(Array<T> const &src) {
 	}
 	else
 	{
-		_array = new T[size];
+		_array = new T[_size];
 		if (!_array)
 			throw std::exception();
 		for (unsigned int i = 0; i < _size; i++)
@@ -72,7 +72,7 @@ Array<T> &Array<T>::operator=(Array<T> const &rhs) {
 	{
 		if (_array)
 			delete _array;
-		_size = rhs.__size;
+		_size = rhs._size;
 		if (_size == 0)
 			_array = NULL;
 		else
@@ -80,7 +80,7 @@ Array<T> &Array<T>::operator=(Array<T> const &rhs) {
 			_array = new T[_size];
 			if (!_array)
 				throw std::exception();
-			for (unsigned int i = 0; i < _size, i++)
+			for (unsigned int i = 0; i < _size; i++)
 				_array[i] = rhs._array[i];
 		}
 	}
@@ -91,7 +91,7 @@ Array<T> &Array<T>::operator=(Array<T> const &rhs) {
 template<typename T>
 T	&Array<T>::operator[](unsigned int n) const {
 
-	if (n >= size)
+	if (n >= _size)
 	{
 		throw Array<T>::WrongIndex();
 	}
@@ -99,13 +99,27 @@ T	&Array<T>::operator[](unsigned int n) const {
 }
 
 /* ************************************************************************** */
+/*                   			  Getters & Setters              		      */
+/* ************************************************************************** */
+
+template< typename T >
+T *Array<T>::getArray() const {
+
+	return (_array);
+}
+
+
+/* ************************************************************************** */
 /*                   			  Méthodes                 		              */
 /* ************************************************************************** */
 
 template<typename T>
 unsigned int	Array<T>::size() const {
-
-	return (_size);
+	
+	if (_size > 0)
+		return (_size);
+	else
+		throw Array<T>::EmptySize();
 }
 
 /* ************************************************************************** */
@@ -115,5 +129,11 @@ unsigned int	Array<T>::size() const {
 template<typename T>
 const char *Array<T>::WrongIndex::what() const throw() {
 
-	return ("IMVALID INDEX");
+	return ("INVALID INDEX");
+}
+
+template<typename T>
+const char *Array<T>::EmptySize::what() const throw() {
+
+	return ("INVALID SIZE");
 }

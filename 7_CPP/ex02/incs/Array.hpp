@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:44:24 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/08 19:19:59 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:37:26 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <stdlib.h>
 #include "colors.hpp"
 #include "iter.hpp"
-#include "../srcs/Array.tpp"
 
 template< typename T >
 class Array {
@@ -35,7 +34,7 @@ class Array {
 	T 		 		&operator[](unsigned int n) const;
 
 	// Getters & Setters
-	
+	T				*getArray() const;
 	// Méthodes
 	unsigned int	size() const;
 
@@ -45,7 +44,14 @@ class Array {
 	{
 		public :
 			virtual const char *what() const throw();
-	}
+	};
+
+	class EmptySize : public std::exception
+	{
+		public :
+			virtual const char *what() const throw();
+	};
+
 	
 	private:
 
@@ -53,3 +59,4 @@ class Array {
 	unsigned int _size;
 };
 
+#include "../srcs/Array.tpp"

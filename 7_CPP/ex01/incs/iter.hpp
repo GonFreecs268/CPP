@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:18:07 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/08 18:38:04 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:54:54 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	iter(T *array, size_t len, F f) {
         for (size_t i = 0; i < len; i++)
             f(array[i]);
     } 
-    catch (const std::invalid_argument& e) {
+    catch (const std::invalid_argument& e) 
+	{
         std::cout << _RED "Caught exception: " << e.what() << _END << std::endl;
     }
 }
