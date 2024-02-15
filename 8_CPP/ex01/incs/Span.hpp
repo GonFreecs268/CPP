@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:49:50 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/13 18:24:09 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:05:16 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <algorithm> // find
 #include <limits> // std::numeric
 #include "colors.hpp"
+#include "Generate.hpp"
 
 class Span
 {
@@ -27,6 +28,7 @@ class Span
 	// Constructeurs & Destructeurs
     Span();
 	Span(unsigned int size);
+	Span(int size, int start);
     Span(Span const &src);
     ~Span();
 
@@ -34,14 +36,14 @@ class Span
     Span& operator=(Span const &rhs);
 
 	// Getters & Setters
-	unsigned int	getSize() const;
+	unsigned int			getSize() const;
+	const std::vector<int>& getNumbers() const;
 	
 	// Méthodes
 	void				addNumber(unsigned int new_N);
-	// void				addNumber( std::vector<int> tabAdd )
+	void				addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	unsigned int		shortestSpan() const;
 	unsigned int		longestSpan() const;
-	
 	
 	private:
 
@@ -50,3 +52,4 @@ class Span
 	
 };
 
+std::ostream& operator<<(std::ostream &o, Span const &rhs);
