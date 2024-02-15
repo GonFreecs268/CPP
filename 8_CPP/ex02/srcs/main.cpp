@@ -6,14 +6,14 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:06:30 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/15 14:31:59 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:19:07 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/MutantStack.hpp"
 
-int main()
-{
+void stackExample() {
+
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -34,40 +34,49 @@ int main()
 	++it;
 	}
 	std::stack<int> s(mstack);
-	return (0);
 }
 
-// int main()
-// {
-//     std::list<int> lstack; // Utiliser std::list au lieu de MutantStack
-//     lstack.push_back(5); // Utiliser push_back() au lieu de push()
-//     lstack.push_back(17);
+void	listExample() {
 
-//     std::cout << lstack.back() << std::endl; // Utiliser back() au lieu de top()
+	std::list<int> lstack; // Utiliser std::list au lieu de MutantStack
+    lstack.push_back(5); // Utiliser push_back() au lieu de push()
+    lstack.push_back(17);
 
-//     lstack.pop_back(); // Utiliser pop_back() au lieu de pop()
+    std::cout << lstack.back() << std::endl; // Utiliser back() au lieu de top()
 
-//     std::cout << lstack.size() << std::endl;
+    lstack.pop_back(); // Utiliser pop_back() au lieu de pop()
 
-//     lstack.push_back(3);
-//     lstack.push_back(5);
-//     lstack.push_back(737);
-//     lstack.push_back(0);
+    std::cout << lstack.size() << std::endl;
 
-//     std::list<int>::iterator it = lstack.begin(); // Utiliser begin() au lieu de MutantStack<int>::iterator
-//     std::list<int>::iterator ite = lstack.end(); // Utiliser end() au lieu de MutantStack<int>::iterator
+    lstack.push_back(3);
+    lstack.push_back(5);
+    lstack.push_back(737);
+    lstack.push_back(0);
 
-//     ++it;
-//     --it;
+    std::list<int>::iterator it = lstack.begin(); // Utiliser begin() au lieu de MutantStack<int>::iterator
+    std::list<int>::iterator ite = lstack.end(); // Utiliser end() au lieu de MutantStack<int>::iterator
 
-//     while (it != ite)
-//     {
-//         std::cout << *it << std::endl;
-//         ++it;
-//     }
-//     std::list<int> s(lstack); // Utiliser le constructeur par copie de std::list au lieu de std::stack<int>
+    ++it;
+    --it;
 
-//     return (0);
-// }
+    while (it != ite)
+    {
+        std::cout << *it << std::endl;
+        ++it;
+    }
+    std::list<int> s(lstack); // Utiliser le constructeur par copie de std::list au lieu de std::stack<int>	
+}
 
 
+int main() {
+
+	std::cout << _SILVER "\t\t\t\t\tStack Test Example:" _END << std::endl;
+	stackExample();
+	
+	std::cout << "-----------------------------------------------" << std::endl;
+
+    std::cout << _SILVER "\t\t\t\t\tList Test Example:" _END << std::endl;
+    listExample();
+
+	return (0);
+}

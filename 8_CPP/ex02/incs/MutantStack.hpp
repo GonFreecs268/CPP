@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:06:30 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/14 18:02:37 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:17:52 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <iostream>
 #include <list>
+#include "colors.hpp"
 
 template<typename T>
 class MutantStack : public std::stack<T> {
