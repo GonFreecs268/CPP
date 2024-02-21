@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:59:51 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/07 13:56:29 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:33:21 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,12 @@ void ScalarConverter::printInt(int integer) {
 
 void ScalarConverter::printFloat(float f) {
 	
-	std::cout << _FOREST_GREEN "float : " << f << ".0f" << _END << std::endl;
+	std::cout << _FOREST_GREEN "float : " << std::fixed << std::setprecision(1) << f << "f" << _END << std::endl;
 }
 
 void ScalarConverter::printDouble(double d) {
 	
-	std::cout << _FOREST_GREEN "double : " << d << ".0" << _END << std::endl;
+	std::cout << _FOREST_GREEN "double : " << std::fixed << std::setprecision(1) << d << _END << std::endl;
 }
 
 void	ScalarConverter::convertChar(char c) {
