@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 18:30:36 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/20 17:17:22 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:10:53 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,9 @@ void	BitcoinExchange::checkValue(T &value) {
 bool BitcoinExchange::checkLine(const std::string &line, std::string &date, float &value) {
 
 
-	if (line.find("date") != std::string::npos)
+	if (line.find("date") != std::string::npos || line.empty())
 		return (false);
-	if (line.empty())
-		return (false);
+		
 	std::istringstream ss(line);
 	std::getline(ss, date, ' ');
     try 
@@ -128,7 +127,9 @@ bool BitcoinExchange::checkLine(const std::string &line, std::string &date, floa
             return (false);
         ss.ignore(std::numeric_limits<std::streamsize>::max(), '|');
         ss.ignore(std::numeric_limits<std::streamsize>::max(), ' ');
-        ss >> value;
+		
+        if (!(ss >> value))
+			throw std::invalid_argument(_RED "No value found after the date" _END);
         checkValue(value);
     } 
 	catch (const std::exception &e) 

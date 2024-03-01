@@ -6,7 +6,7 @@
 /*   By: jaristil <jaristil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:55:52 by jaristil          #+#    #+#             */
-/*   Updated: 2024/02/23 19:20:48 by jaristil         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:53:17 by jaristil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ PmergeMe::PmergeMe() {
 
 	std::cout << _YELLOW "Default Constructor called: PmergeMe" _END << std::endl;
 }
-
 
 PmergeMe::PmergeMe(PmergeMe const &src) {
 
@@ -52,19 +51,18 @@ PmergeMe&	PmergeMe::operator=(PmergeMe const &rhs) {
 /*                    		 Getters & Setters                  		      */
 /* ************************************************************************** */
 
-size_t	PmergeMe::getSize() const {
+// size_t	PmergeMe::getSize() const {
 
-	return (_Vsort.size());
-}
+// 	return (_Vsort.size());
+// }
 
-int	PmergeMe::getElement(size_t index) const {
+// int	PmergeMe::getElement(size_t index) const {
 
-	if (index < _Vsort.size())
-		return (_Vsort[index]);
-	else
-		return -1;
-		// throw here
-}
+// 	if (index < _Vsort.size())
+// 		return (_Vsort[index]);
+// 	else
+// 		return -1;
+// }
 
 /* ************************************************************************** */
 /*                   			  Méthodes                 		              */
@@ -73,56 +71,212 @@ int	PmergeMe::getElement(size_t index) const {
 void	PmergeMe::addElement(int value) {
 
 	_Vsort.push_back(value);
+	_Dsort.push_back(value);;
 }
 
-bool	PmergeMe::isInt(std::string str) const {
-	size_t	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (isdigit(str[i]))
-		i++;
-	if (i == str.length())
-		return (true);
-	return (false);
-}
+unsigned int	PmergeMe::jacobsthal(unsigned int n) {
 
-unsigned int	PmergeMe::Jacobsthal(unsigned int n) {
-
-	// 1st terne de la suite
 	if (n == 0)
 		return (0);
-	// 2nd terme de la suite
 	else if (n == 1)
 		return (1);
-	// recursion until cas 0/1
 	else
-		return Jacobsthal(n -1) + 2 * Jacobsthal(n - 2);
+		return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
-// pernet de trier le ss vecteur
-void	PmergeMe::ford_johnson_vector(int start, int end) {
+void	PmergeMe::binarySearchInsert(std::vector<int> &container, int value) {
 
-	// if not then the vector only contain 1 or 0 elem
-	if (start < end)
+	int	low = 0;
+	int	high = container.size() - 1;
+
+	while (low <= high)
 	{
-		int	middle = start + (end - start) / 2;
-		ford_johnson_vector(start, middle);
-		ford_johnson_vector(middle + 1, end);
-		
-		int index = Jacobsthal(end - start + 1) - 1;
-		_Vsort.insert(_Vsort.begin() + index, _Vsort[middle]);
-		
-		if (index < middle)
-			_Vsort.erase(_Vsort.begin() + middle + 1);
+		int mid = low + (high - low) / 2;
+		if (container[mid] == value)
+			return ;
+		else if (container[mid] < value)
+			low = mid + 1;
 		else
-			_Vsort.erase(_Vsort.begin() + middle);
+			high = mid - 1;
+	}
+	container.insert(container.begin() + low, value);
+}
+
+void	PmergeMe::binarySearchInsert(std::deque<int> &container, int value) {
+
+	int	low = 0;
+	int	high = container.size() - 1;
+
+	while (low <= high)
+	{
+		int mid = low + (high - low) / 2;
+		if (container[mid] == value)
+			return ;
+		else if (container[mid] < value)
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+	container.insert(container.begin() + low, value);
+}
+
+void PmergeMe::ford_johnson_vector(std::vector<int> &Vsort) {
+	
+	std::vector<int>	main;
+	std::vector<int>	pend;
+	std::vector<int>::iterator end = Vsort.end();
+	
+	// Step 1 : Group the element of vec into (n/2) pair
+	// Step 2 : Perform (n/2) comparaisons to determine the larger
+	for (std::vector<int>::iterator it = Vsort.begin() ; it < end - 1; it += 2)
+	{
+		if (*it > *(it + 1))
+			std::swap(*it, *(it + 1));
+	}
+	if (Vsort.size() > 2)
+	{
+		for (std::vector<int>::iterator it = Vsort.begin() ; it < end; it += 2)
+		{
+			main.push_back(*it);
+			if (it < end - 1)
+				pend.push_back(*(it + 1));
+
+		}
+
+		// Step 3 : Recursively sort the (n/2) larger elements from each pair creating a sorted sequence
+		ford_johnson_vector(pend);
+	
+		size_t size_main = main.size();
+		for (size_t index = 0; index < size_main; index++)
+		{
+			size_t i_jack = 0;
+			size_t sortIndex = 0;
+			for (;  jacobsthal(i_jack) < index; i_jack++) {}
+			if (i_jack)
+			{
+				if (jacobsthal(i_jack) >= size_main - 1)
+					sortIndex = size_main - (index - jacobsthal(i_jack - 1));
+				else
+					sortIndex = jacobsthal(i_jack) + 1 - (index - jacobsthal(i_jack - 1));
+			}
+			binarySearchInsert(pend, main[sortIndex]);
+		}
+		Vsort = pend;
+	}
+}
+
+void PmergeMe::ford_johnson_deque(std::deque<int> &Dsort) {
+	
+	std::deque<int>	main;
+	std::deque<int>	pend;
+	std::deque<int>::iterator end = Dsort.end();
+	
+	for (std::deque<int>::iterator it = Dsort.begin() ; it < end - 1; it += 2)
+	{
+		if (*it > *(it + 1))
+			std::swap(*it, *(it + 1));
+	}
+	if (Dsort.size() > 2)
+	{
+		for (std::deque<int>::iterator it = Dsort.begin() ; it < end; it += 2)
+		{
+			main.push_back(*it);
+			if (it < end - 1)
+				pend.push_back(*(it + 1));
+
+		}
+
+		ford_johnson_deque(pend);
+	
+		size_t size_main = main.size();
+		for (size_t index = 0; index < size_main; index++)
+		{
+			size_t i_jack = 0;
+			size_t sortIndex = 0;
+			for (;  jacobsthal(i_jack) < index; i_jack++) {}
+			if (i_jack)
+			{
+				if (jacobsthal(i_jack) >= size_main - 1)
+					sortIndex = size_main - (index - jacobsthal(i_jack - 1));
+				else
+					sortIndex = jacobsthal(i_jack) + 1 - (index - jacobsthal(i_jack - 1));
+			}
+			binarySearchInsert(pend, main[sortIndex]);
+		}
+		Dsort = pend;
 	}
 }
 
 void	PmergeMe::ford_johnson_vector() {
 
 	if (_Vsort.size() > 1)
-		ford_johnson_vector(0, _Vsort.size() - 1);
+		ford_johnson_vector(_Vsort);
+}
+
+void	PmergeMe::ford_johnson_deque() {
+
+	if (_Dsort.size() > 1)
+		ford_johnson_deque(_Dsort);
+}
+
+void PmergeMe::print_sequence(const std::string& message, const std::vector<int> &vec) const {
+
+        std::cout << message << ": ";
+        for (std::vector<int>::const_iterator it = vec.begin(); it < vec.end(); ++it) 
+            std::cout << *it << " ";
+        std::cout << std::endl;
+}
+
+void PmergeMe::print_sequence(const std::string& message, const std::deque<int> &deq) const {
+
+        std::cout << message << ": ";
+        for (std::deque<int>::const_iterator it = deq.begin(); it < deq.end(); ++it) 
+            std::cout << *it << " ";
+        std::cout << std::endl;
+}
+
+bool estTrie(std::vector<int>& vec) {
+	
+    for (size_t i = 0; i < vec.size() - 1; ++i) 
+	{
+        if (vec[i] > vec[i + 1])
+            return (false);
+    }
+    return (true);
+}
+
+void	PmergeMe::sort_and_print() {
+
+	print_sequence("Before", _Vsort);
+
+    timeval start_time, end_time;
+    gettimeofday(&start_time, NULL); // Initiate time before execution for vector
+
+    ford_johnson_vector();
+
+    gettimeofday(&end_time, NULL); // Initiate time after execution for vector
+    long long vec_duration = (end_time.tv_sec - start_time.tv_sec) * 1000000LL + (end_time.tv_usec - start_time.tv_usec);
+
+    gettimeofday(&start_time, NULL); // Initiate time before execution for deque
+
+	ford_johnson_deque();
+
+	gettimeofday(&end_time, NULL); // Initiate time after execution for deque
+    long long deq_duration = (end_time.tv_sec - start_time.tv_sec) * 1000000LL + (end_time.tv_usec - start_time.tv_usec);
+	
+    print_sequence("After ", _Vsort);
+	
+    std::cout << "Time to process a range of " << _Vsort.size() << " elements with std::vector : " << vec_duration << " us" << std::endl;
+	std::cout << "Time to process a range of " << _Dsort.size() << " elements with std::deque : " << deq_duration << " us" << std::endl;
+
+	if (estTrie(_Vsort))
+	{
+		std::cout << _FOREST_GREEN "SEQUENCE SORTED" _END << std::endl;
+	}
+	else
+	{
+		std::cout << _RED "SEQUENCE NOT SORTED" _END <<std::endl;
+	}	
 }
 
 /* ************************************************************************** */
